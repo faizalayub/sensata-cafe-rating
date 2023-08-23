@@ -1,6 +1,7 @@
 {
+    "staff_label": "Employee ID",
     "title": "Live STM Cafeteria Rating System",
-    "instruction": "Welcome to the Live Rating Cafeteria System<br><br>Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria.<br>Please rate based on your opinion<br><br>★★★★★-Highest Rate <br>★-Lowest Rate.<br><br>Thank you",
+    "instruction": "Welcome to the Live Rating Cafeteria System<br><br>Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria.<br>Please rate based on your opinion<br><br>★★★★★-Highest Rate <br>★-Lowest Rate<br><br>Thank you",
 
     "rating_label_0": "Food and Cafe Cleanliness",
     "rating_description_0": "Are the Food and Cafe Cleanliness Satisfying?",
@@ -19,6 +20,16 @@
 
     "comment_label": "Please share your thoughts(If Any)",
     "comment_placeholder": "Please provide your comments",
-    "submit_button": "Submit Review"
+    "submit_button": "Submit Review",
+
+    "session_label": "Rating Session",
+    "session_options": [
+        { "name": "Breakfast", "value": 0 },
+        { "name": "Lunch", "value": 1 },
+        { "name": "Dinner", "value": 2 }
+    ],
+
+    "attachment_label": "Attachment Picture",
+    "attachment_placeholder": "Click to attach picture"
 
 }

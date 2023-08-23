@@ -1,10 +1,20 @@
 <template>
     <div class="card flex justify-content-center">
-        <form class="flex flex-column gap-2 form-width">
+        <form class="flex flex-column gap-2 form-width company-logo">
 
-            <div class="flex gap-3 w-full px-3">
-                <Prime-Button @click="toggleLanguage(1)" label="English"></Prime-Button>
-                <Prime-Button @click="toggleLanguage(0)" label="Malay"></Prime-Button>
+            <div class="flex justify-content-end w-full px-3">
+                <div class="flex-1 flex align-items-center justify-content-start h-5rem"></div>
+
+                <Prime-Switch-Button
+                    v-model="lang"
+                    @change="changeLanguage"
+                    :options="[
+                        { label: 'English', value:'en' },
+                        { label: 'Malay', value:'my' }
+                    ]"
+                    optionLabel="label"
+                    optionValue="value">
+                </Prime-Switch-Button>
             </div>
 
             <h2 v-html="language.title" class="m-0 border-bottom-1 border-200 py-3 px-4 text-900"></h2>
@@ -13,16 +23,45 @@
                 <p v-html="language.instruction" class="m-0 p-0 text-700 line-height-3 surface-ground border-round p-3"></p>
             </div>
 
+            <!-- Staff ID -->
+            <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
+                <label v-html="language.staff_label" for="staffid" class="font-bold block mb-2 text-800"></label>
+
+                <Prime-InputMask
+                    v-model="collectStaffcode"
+                    id="staffid"
+                    class="w-full border-400 border-round p-3"
+                    mask="a 9 9 9 9 9 9 9"
+                    :placeholder="language.staff_label">
+                </Prime-InputMask>
+            </div>
+
+            <!-- Session -->
+            <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
+                <label v-html="language.session_label" for="session" class="font-bold block mb-2 text-800"></label>
+
+                <Prime-Dropdown
+                    v-model="collectSession"
+                    id="session"
+                    :options="language.session_options"
+                    :placeholder="language.session_label"
+                    class="w-full"
+                    optionLabel="name"
+                    optionValue="value">
+                </Prime-Dropdown>
+            </div>
+
             <!-- Rate Input -->
             <template v-for="(mark, index) in collectRate" :key="index">
                 <div :class="['flex-auto border-200 mt-2 pt-3 px-4', { 'border-top-1' : true }]">
-                    <label v-html="language[`rating_label_${ index }`]" for="comment" class="text-800 font-bold block"></label>
+                    <label v-html="language[`rating_label_${ index }`]" class="text-800 font-bold block"></label>
 
                     <span v-html="language[`rating_description_${ index }`]" class="text-600 text-sm block py-1"></span>
                     
                     <Prime-Rating
                         v-model="collectRate[index].value"
                         class="mt-2 mb-1"
+                        :cancel="false"
                         :pt="{
                             officon: { class: 'text-yellow-400 text-3xl' },
                             onIcon: { class: 'text-yellow-400' }
@@ -47,6 +86,20 @@
                 </Prime-Textarea>
             </div>
 
+            <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
+                <label v-html="language.attachment_label" class="font-italic block mb-2 text-800"></label>
+
+                <Prime-File-Upload 
+                    mode="basic"
+                    name="commentattachment"
+                    url="#"
+                    accept="image/*"
+                    :chooseLabel="language.attachment_placeholder"
+                    :maxFileSize="1000000"
+                    @upload="onUpload">
+                </Prime-File-Upload>
+            </div>
+
             <!-- Submint Button -->
             <div class="block px-4">
                 <Prime-Button :label="language.submit_button" class="mt-3 w-full"></Prime-Button>
@@ -63,8 +116,12 @@ export default {
     name: 'App',
     data: function(){
         return {
+            lang: 'my',
             language: malay,
+
             collectComment: null,
+            collectSession: null,
+            collectStaffcode: null,
             collectRate: [{
                 label: "Food and Cafe Cleanliness/Tahap Kebersihan Makanan Dan Kafeteria",
                 description: "Are the Food and Cafe Cleanliness Satisfying?/Adakah Tahap Kebersihan Makanan dan Kafeteria Memuaskan?",
@@ -90,15 +147,23 @@ export default {
         }
     },
     methods: {
-        toggleLanguage: function(id){
-            switch(id){
-                case 0: this.language = malay; break;
-                case 1: this.language = english; break;
+        changeLanguage: function(){
+            switch(this.lang){
+                case 'my':
+                    this.language = malay;
+                break;
+                case 'en':
+                    this.language = english;
+                break;
             }
+        },
+        onUpload: function(e){
+            console.clear();
+            console.log(e);
         }
     },
-    computed: {
-        
+    mounted: function(){
+        window.jubo = this;
     }
 }
 </script>
@@ -118,6 +183,14 @@ body, textarea {
 body{
     background-image: url('./assets/cafe-background.jpg');
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+}
+
+.company-logo{
+    background-image: url('./assets/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: 15px -20px;
+    background-size: 120px;
 }
 </style>

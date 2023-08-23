@@ -1,6 +1,7 @@
 {
+    "staff_label": "ID Pekerja",
     "title": "Sistem Penilaian Secara Langsung Kafeteria STM",
-    "instruction": "Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br>Sila nilai berdasarkan pendapat anda<br><br>★★★★★-Terbaik <br>★-Markah Terendah.<br><br>Terima Kasih",
+    "instruction": "Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br>Sila nilai berdasarkan pendapat anda<br><br>★★★★★-Markah Tertinggi <br>★-Markah Terendah<br><br>Terima Kasih",
 
     "rating_label_0": "Tahap Kebersihan Makanan Dan Kafeteria",
     "rating_description_0": "Adakah Tahap Kebersihan Makanan dan Kafeteria Memuaskan?",
@@ -12,13 +13,23 @@
     "rating_description_2": "Adakah cara makanan dipamerkan menyelerakan dan menarik?",
 
     "rating_label_3": "Kualiti dan Rasa Makanan",
-    "rating_description_3": "Adakah bahan makanan yg digunakan segar? Sila nilai rasa makanan.",
+    "rating_description_3": "Adakah bahan makanan yg digunakan segar? Sila nilai rasa makanan",
 
     "rating_label_4": "Khidmat Pelanggan",
     "rating_description_4": "Adakah Perkhidmatan Pelanggan di sini memberikan layanan yang baik?",
 
     "comment_label": "Sila Kongsi Pendapat Anda(Jika Ada)",
     "comment_placeholder": "Sila nyatakan komen anda",
-    "submit_button": "Pengesahan Review"
+    "submit_button": "Pengesahan Review",
+
+    "session_label": "Sesi Penilaian",
+    "session_options": [
+        { "name": "Sarapan", "value": 0 },
+        { "name": "Makan Tengah Hari", "value": 1 },
+        { "name": "Makan Malam", "value": 2 }
+    ],
+
+    "attachment_label": "Gambar Lampiran",
+    "attachment_placeholder": "Tekan untuk pilih gambar"
 
 }
