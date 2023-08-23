@@ -2,15 +2,15 @@
     <div class="card flex justify-content-center">
         <form class="flex flex-column gap-2 form-width">
 
-            <h2 class="m-0 border-bottom-1 border-200 py-3 px-4 text-900">Kitchen Experience and Food Quality Rating Form</h2>
+            <h2 class="m-0 border-bottom-1 border-200 py-3 px-4 text-900">Live STM Cafeteria Rating System/Sistem Penilaian Secara Langsung Kafeteria STM</h2>
 
             <div class="w-full px-2">
                 <p class="m-0 p-0 text-700 line-height-3 surface-ground border-round p-3">
-                    Welcome to our Kitchen Experience and Food Quality Rating Form!<br><br>
-                    Your feedback is invaluable to us as we strive to enhance our kitchen and dining offerings. Kindly take a moment to rate your experience with both our kitchen facilities and the quality of our food. Your ratings and comments will help us understand what we're doing well and areas where we can improve.<br><br>
-                    Please rsssate each criterion on a scale of 1 to 5, with 1 being the lowest and 5 being the highest. Additionally, feel free to provide specific comments or suggestions for each criterion, as well as any general feedback you'd like to share.<br><br>
+                    Welcome to the Live Rating Cafeteria System/Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>
+                    Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria./Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br><br>
+                    Please rate based on your opinion/Sila nilai berdasarkan pendapat anda, ★★★★★-Highest Rate/Terbaik  ★-Lowest Rate/Markah Terendah.<br><br>
 
-                    Thank you for helping us provide the best possible experience. Your input matters!
+                    Thank you/ Terima Kasih
                 </p>
             </div>
 
@@ -34,12 +34,12 @@
 
             <!-- Comment -->
             <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
-                <label for="comment" class="font-bold block mb-2 text-800">Share your thoughts...</label>
+                <label for="comment" class="font-bold block mb-2 text-800">Please share your thoughts(If Any)/Sila Kongsi Pendapat Anda(Jika Ada)</label>
 
                 <Prime-Textarea
                     id="comment"
                     v-model="collectComment"
-                    placeholder="Please provide your comments"
+                    placeholder="Please provide your comments/Sila nyatakan komen anda"
                     :class="['w-full border-400 border-round p-3', {
                         'p-invalid': true
                     }]"
@@ -50,7 +50,7 @@
 
             <!-- Submint Button -->
             <div class="block px-4">
-                <Prime-Button label="Submit Review" class="mt-3 w-full"></Prime-Button>
+                <Prime-Button label="Submit Review/Pengesahan Review" class="mt-3 w-full"></Prime-Button>
             </div>
         </form>
     </div>
@@ -63,28 +63,25 @@ export default {
         return {
             collectComment: null,
             collectRate: [{
-                label: "Portion Size",
-                description: "Are the portion sizes appropriate and satisfying?",
+                label: "Food and Cafe Cleanliness/Tahap Kebersihan Makanan Dan Kafeteria",
+                description: "Are the Food and Cafe Cleanliness Satisfying?/Adakah Tahap Kebersihan Makanan dan Kafeteria Memuaskan?",
                 value: 0
             },{
-                label: "Variety",
-                description: "How diverse and varied are the food options available?",
+                label: "Food Menu/Menu Makanan",
+                description: "How diverse and varied are the food options available?/Adakah Menu makanan mempunyai kepelbagaian?",
                 value: 0
             },{
-                label: "Presentation",
-                description: "How appealing is the visual presentation of the dishes?",
+                label: "Food Presentation/Cara Penyusunan Dan Cara Makanan Dipamerkan",
+                description: "How appealing is the visual presentation of the dishes?/Adakah cara makanan dipamerkan menyelerakan dan menarik?",
                 value: 0
             },{
-                label: "Freshness",
-                description: "How fresh are the ingredients used in the dishes?",
+                label: "Food Quality and Taste/Kualiti dan Rasa Makanan",
+                description: "How fresh are the ingredients used in the dishes?Please rate the taste./Adakah bahan makanan yg digunakan segar? Sila nilai rasa makanan.",
                 value: 0
+            
             },{
-                label: "Taste",
-                description: "How flavorful and delicious is the food?",
-                value: 0
-            },{
-                label: "Overall Food Experience",
-                description: "Considering all aspects, how would you rate your overall dining experience in terms of the food?",
+                label: "Customer Service/Khidmat Pelanggan",
+                description: "Does the Customer Service here provide good service?/Adakah Perkhidmatan Pelanggan di sini memberikan layanan yang baik?",
                 value: 0
             }]
         }
