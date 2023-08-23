@@ -114,4 +114,10 @@ body, textarea {
 .form-width{
     max-width: clamp(380px, 50vw, 560px);
 }
+
+body{
+    background-image: url('./assets/cafe-background.jpg');
+    background-position: center;
+    background-size: cover;
+}
 </style>
