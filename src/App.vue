@@ -2,16 +2,15 @@
     <div class="card flex justify-content-center">
         <form class="flex flex-column gap-2 form-width">
 
-            <h2 class="m-0 border-bottom-1 border-200 py-3 px-4 text-900">Live STM Cafeteria Rating System/Sistem Penilaian Secara Langsung Kafeteria STM</h2>
+            <div class="flex gap-3 w-full px-3">
+                <Prime-Button @click="toggleLanguage(1)" label="English"></Prime-Button>
+                <Prime-Button @click="toggleLanguage(0)" label="Malay"></Prime-Button>
+            </div>
+
+            <h2 v-html="language.title" class="m-0 border-bottom-1 border-200 py-3 px-4 text-900"></h2>
 
             <div class="w-full px-2">
-                <p class="m-0 p-0 text-700 line-height-3 surface-ground border-round p-3">
-                    Welcome to the Live Rating Cafeteria System/Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>
-                    Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria./Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br><br>
-                    Please rate based on your opinion/Sila nilai berdasarkan pendapat anda, ★★★★★-Highest Rate/Terbaik  ★-Lowest Rate/Markah Terendah.<br><br>
-
-                    Thank you/ Terima Kasih
-                </p>
+                <p v-html="language.instruction" class="m-0 p-0 text-700 line-height-3 surface-ground border-round p-3"></p>
             </div>
 
             <!-- Rate Input -->
@@ -34,7 +33,7 @@
 
             <!-- Comment -->
             <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
-                <label for="comment" class="font-bold block mb-2 text-800">Please share your thoughts(If Any)/Sila Kongsi Pendapat Anda(Jika Ada)</label>
+                <label for="comment" class="font-bold block mb-2 text-800">Please share your thoughts(If Any)/<br>Sila Kongsi Pendapat Anda(Jika Ada)</label>
 
                 <Prime-Textarea
                     id="comment"
@@ -57,10 +56,14 @@
 </template>
 
 <script>
+import malay from './lang/malay.json';
+import english from './lang/english.json';
+
 export default {
     name: 'App',
     data: function(){
         return {
+            language: malay,
             collectComment: null,
             collectRate: [{
                 label: "Food and Cafe Cleanliness/Tahap Kebersihan Makanan Dan Kafeteria",
@@ -85,6 +88,17 @@ export default {
                 value: 0
             }]
         }
+    },
+    methods: {
+        toggleLanguage: function(id){
+            switch(id){
+                case 0: this.language = malay; break;
+                case 1: this.language = english; break;
+            }
+        }
+    },
+    computed: {
+        
     }
 }
 </script>
