@@ -8,7 +8,7 @@
                 <p class="m-0 p-0 text-700 line-height-3 surface-ground border-round p-3">
                     Welcome to our Kitchen Experience and Food Quality Rating Form!<br><br>
                     Your feedback is invaluable to us as we strive to enhance our kitchen and dining offerings. Kindly take a moment to rate your experience with both our kitchen facilities and the quality of our food. Your ratings and comments will help us understand what we're doing well and areas where we can improve.<br><br>
-                    Please rate each criterion on a scale of 1 to 5, with 1 being the lowest and 5 being the highest. Additionally, feel free to provide specific comments or suggestions for each criterion, as well as any general feedback you'd like to share.<br><br>
+                    Please rsssate each criterion on a scale of 1 to 5, with 1 being the lowest and 5 being the highest. Additionally, feel free to provide specific comments or suggestions for each criterion, as well as any general feedback you'd like to share.<br><br>
 
                     Thank you for helping us provide the best possible experience. Your input matters!
                 </p>
