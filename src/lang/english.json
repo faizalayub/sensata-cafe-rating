@@ -1,4 +1,24 @@
 {
     "title": "Live STM Cafeteria Rating System",
-    "instruction": "Welcome to the Live Rating Cafeteria System<br><br>Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria.<br>Please rate based on your opinion<br><br>★★★★★-Highest Rate <br>★-Lowest Rate.<br><br>Thank you"
+    "instruction": "Welcome to the Live Rating Cafeteria System<br><br>Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria.<br>Please rate based on your opinion<br><br>★★★★★-Highest Rate <br>★-Lowest Rate.<br><br>Thank you",
+
+    "rating_label_0": "Food and Cafe Cleanliness",
+    "rating_description_0": "Are the Food and Cafe Cleanliness Satisfying?",
+
+    "rating_label_1": "Food Menu",
+    "rating_description_1": "How diverse and varied are the food options available?",
+
+    "rating_label_2": "Food Presentation",
+    "rating_description_2": "How appealing is the visual presentation of the dishes?",
+
+    "rating_label_3": "Food Quality and Taste",
+    "rating_description_3": "How fresh are the ingredients used in the dishes? Please rate the taste.",
+
+    "rating_label_4": "Customer Service",
+    "rating_description_4": "Does the Customer Service here provide good service?",
+
+    "comment_label": "Please share your thoughts(If Any)",
+    "comment_placeholder": "Please provide your comments",
+    "submit_button": "Submit Review"
+
 }

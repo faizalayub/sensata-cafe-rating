@@ -16,9 +16,9 @@
             <!-- Rate Input -->
             <template v-for="(mark, index) in collectRate" :key="index">
                 <div :class="['flex-auto border-200 mt-2 pt-3 px-4', { 'border-top-1' : true }]">
-                    <label for="comment" class="text-800 font-bold block">{{ mark.label }}</label>
+                    <label v-html="language[`rating_label_${ index }`]" for="comment" class="text-800 font-bold block"></label>
 
-                    <span class="text-600 text-sm block py-1">{{ mark.description }}</span>
+                    <span v-html="language[`rating_description_${ index }`]" class="text-600 text-sm block py-1"></span>
                     
                     <Prime-Rating
                         v-model="collectRate[index].value"
@@ -33,12 +33,12 @@
 
             <!-- Comment -->
             <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
-                <label for="comment" class="font-bold block mb-2 text-800">Please share your thoughts(If Any)/<br>Sila Kongsi Pendapat Anda(Jika Ada)</label>
+                <label v-html="language.comment_label" for="comment" class="font-bold block mb-2 text-800"></label>
 
                 <Prime-Textarea
                     id="comment"
                     v-model="collectComment"
-                    placeholder="Please provide your comments/Sila nyatakan komen anda"
+                    :placeholder="language.comment_placeholder"
                     :class="['w-full border-400 border-round p-3', {
                         'p-invalid': true
                     }]"
@@ -49,7 +49,7 @@
 
             <!-- Submint Button -->
             <div class="block px-4">
-                <Prime-Button label="Submit Review/Pengesahan Review" class="mt-3 w-full"></Prime-Button>
+                <Prime-Button :label="language.submit_button" class="mt-3 w-full"></Prime-Button>
             </div>
         </form>
     </div>

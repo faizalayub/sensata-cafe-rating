@@ -1,4 +1,24 @@
 {
     "title": "Sistem Penilaian Secara Langsung Kafeteria STM",
-    "instruction": "Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br>Sila nilai berdasarkan pendapat anda<br><br>★★★★★-Terbaik <br>★-Markah Terendah.<br><br>Terima Kasih"
+    "instruction": "Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br>Sila nilai berdasarkan pendapat anda<br><br>★★★★★-Terbaik <br>★-Markah Terendah.<br><br>Terima Kasih",
+
+    "rating_label_0": "Tahap Kebersihan Makanan Dan Kafeteria",
+    "rating_description_0": "Adakah Tahap Kebersihan Makanan dan Kafeteria Memuaskan?",
+
+    "rating_label_1": "Menu Makanan",
+    "rating_description_1": "Adakah Menu makanan mempunyai kepelbagaian?",
+
+    "rating_label_2": "Cara Penyusunan Dan Cara Makanan Dipamerkan",
+    "rating_description_2": "Adakah cara makanan dipamerkan menyelerakan dan menarik?",
+
+    "rating_label_3": "Kualiti dan Rasa Makanan",
+    "rating_description_3": "Adakah bahan makanan yg digunakan segar? Sila nilai rasa makanan.",
+
+    "rating_label_4": "Khidmat Pelanggan",
+    "rating_description_4": "Adakah Perkhidmatan Pelanggan di sini memberikan layanan yang baik?",
+
+    "comment_label": "Sila Kongsi Pendapat Anda(Jika Ada)",
+    "comment_placeholder": "Sila nyatakan komen anda",
+    "submit_button": "Pengesahan Review"
+
 }
