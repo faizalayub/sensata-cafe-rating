@@ -1,5 +1,6 @@
 {
     "staff_label": "ID Pekerja",
+    "staff_label_require_text": "Sila masukkan id pekerja",
     "title": "Sistem Penilaian Secara Langsung Kafeteria STM",
     "instruction": "Selamat Datang ke Sistem Penilaian Secara Langsung Kafeteria<br><br>Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM, sila kongsi pendapat anda.<br>Sila nilai berdasarkan pendapat anda<br><br>★★★★★-Markah Tertinggi <br>★-Markah Terendah<br><br>Terima Kasih",
 
@@ -23,11 +24,25 @@
     "submit_button": "Pengesahan Review",
 
     "session_label": "Sesi Penilaian",
+    "session_label_require_text": "Sila pilih sesi penilaian",
     "session_options": [
         { "name": "Sarapan", "value": 0 },
         { "name": "Makan Tengah Hari", "value": 1 },
         { "name": "Makan Malam", "value": 2 }
     ],
+
+    "confirm_submit_title": "Anda pasti untuk hantar markah undian?",
+    "confirm_submit_description": "Undian ini hanya bole dihantar sekali sahaja di dalam sehari",
+    "confirm_submit_agree_text": "Teruskan",
+    "confirm_submit_decline_text": "Tutup",
+
+    "done_submit_title": "Markah telah dihantar",
+    "done_submit_description": "Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM",
+    "done_submit_agree_text": "Ok",
+
+    "fail_submit_title": "Maaf, kami tidak boleh proses permintaan anda buat masa ini",
+    "fail_submit_description": "Sila cuba lagi",
+    "fail_submit_agree_text": "Ok",
 
     "attachment_label": "Gambar Lampiran",
     "attachment_placeholder": "Tekan untuk pilih gambar"

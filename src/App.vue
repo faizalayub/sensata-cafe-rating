@@ -25,7 +25,10 @@
 
             <!-- Staff ID -->
             <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
-                <label v-html="language.staff_label" for="staffid" class="font-bold block mb-2 text-800"></label>
+                <div ref="staffcode" class="w-full flex align-items-center flex-wrap gap-3 mb-2">
+                    <label v-html="language.staff_label" for="staffid" class="font-bold block text-800 flex-1"></label>
+                    <span v-if="v$.collectStaffcode.$error" class="text-red-600 white-space-nowrap font-italic text-sm">{{ language.staff_label_require_text }}</span>
+                </div>
 
                 <Prime-InputMask
                     v-model="collectStaffcode"
@@ -38,7 +41,10 @@
 
             <!-- Session -->
             <div class="flex-auto border-top-1 border-200 mt-2 pt-3 px-4">
-                <label v-html="language.session_label" for="session" class="font-bold block mb-2 text-800"></label>
+                <div ref="session" class="w-full flex align-items-center flex-wrap gap-3 mb-2">
+                    <label v-html="language.session_label" for="session" class="font-bold block text-800 flex-1"></label>
+                    <span v-if="v$.collectSession.$error" class="text-red-600 white-space-nowrap font-italic text-sm">{{ language.session_label_require_text }}</span>
+                </div>
 
                 <Prime-Dropdown
                     v-model="collectSession"
@@ -102,13 +108,21 @@
 
             <!-- Submint Button -->
             <div class="block px-4">
-                <Prime-Button :label="language.submit_button" class="mt-3 w-full"></Prime-Button>
+                <Prime-Button
+                    @click="onSubmit"
+                    :loading="loading"
+                    :label="language.submit_button"
+                    class="mt-3 w-full">
+                </Prime-Button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 import malay from './lang/malay.json';
 import english from './lang/english.json';
 
@@ -118,6 +132,7 @@ export default {
         return {
             lang: 'my',
             language: malay,
+            loading: false,
 
             collectComment: null,
             collectSession: null,
@@ -125,24 +140,24 @@ export default {
             collectRate: [{
                 label: "Food and Cafe Cleanliness/Tahap Kebersihan Makanan Dan Kafeteria",
                 description: "Are the Food and Cafe Cleanliness Satisfying?/Adakah Tahap Kebersihan Makanan dan Kafeteria Memuaskan?",
-                value: 0
+                value: null
             },{
                 label: "Food Menu/Menu Makanan",
                 description: "How diverse and varied are the food options available?/Adakah Menu makanan mempunyai kepelbagaian?",
-                value: 0
+                value: null
             },{
                 label: "Food Presentation/Cara Penyusunan Dan Cara Makanan Dipamerkan",
                 description: "How appealing is the visual presentation of the dishes?/Adakah cara makanan dipamerkan menyelerakan dan menarik?",
-                value: 0
+                value: null
             },{
                 label: "Food Quality and Taste/Kualiti dan Rasa Makanan",
                 description: "How fresh are the ingredients used in the dishes?Please rate the taste./Adakah bahan makanan yg digunakan segar? Sila nilai rasa makanan.",
-                value: 0
+                value: null
             
             },{
                 label: "Customer Service/Khidmat Pelanggan",
                 description: "Does the Customer Service here provide good service?/Adakah Perkhidmatan Pelanggan di sini memberikan layanan yang baik?",
-                value: 0
+                value: null
             }]
         }
     },
@@ -160,6 +175,95 @@ export default {
         onUpload: function(e){
             console.clear();
             console.log(e);
+        },
+        onSubmit: async function(){
+            const lang = (this.language);
+
+            try{
+                const isvalid = await this.v$.$validate();
+
+                if(isvalid){
+                    //# Proceed --
+                    this.loading = true;
+
+                    const $confirm = await this.$swal({
+                        title: lang.confirm_submit_title,
+                        text: lang.confirm_submit_description,
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonText: lang.confirm_submit_agree_text,
+                        cancelButtonText: lang.confirm_submit_decline_text,
+                        confirmButtonClass: 'bg-success-600',
+                        cancelButtonClass: 'surface-600'
+                    });
+
+                    if($confirm.isConfirmed){
+                        await axios({
+                            url: '',
+                            method: 'POST',
+                            data: {
+                                comment: this.collectComment,
+                                session: this.collectSession,
+                                userid: this.collectStaffcode,
+                                mark: this.collectRate.map(c => c.value),
+                            }
+                        });
+
+                        this.$swal({
+                            title: lang.done_submit_title,
+                            text: lang.done_submit_description,
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: lang.done_submit_agree_text,
+                            confirmButtonClass: 'bg-success-600',
+                        });
+                    }
+
+                    this.loading = false;
+                }else{
+                    //# Denied --
+                    const emptyCode = (this.v$.collectStaffcode.$error);
+                    const emptySession = (this.v$.collectSession.$error);
+                    const configScroller = { behavior: "smooth", block: "end", inline: "nearest" };
+                    const { staffcode, session } = this.$refs;
+
+                    if(emptyCode){
+                        staffcode.scrollIntoView(configScroller);
+                        
+                    }else if(emptySession){
+                        session.scrollIntoView(configScroller);
+                    }
+                }
+
+            }catch(error){
+                //# Failure --
+                this.$swal({
+                    title: lang.fail_submit_title,
+                    text: lang.fail_submit_description,
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonText: lang.fail_submit_agree_text,
+                    confirmButtonClass: 'bg-red-600',
+                });
+
+                this.loading = false;
+            }
+        }
+    },
+    setup: function(){
+        return { v$: useVuelidate() }
+    },
+    validations () {
+        return {
+            collectSession: { required },
+            collectStaffcode: { required },
+            collectRate: [
+                { value: required },
+                { value: required },
+                { value: required },
+                { value: required },
+                { value: required }
+            ]
         }
     },
     mounted: function(){

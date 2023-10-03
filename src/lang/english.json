@@ -1,5 +1,6 @@
 {
     "staff_label": "Employee ID",
+    "staff_label_require_text": "Please enter staff id",
     "title": "Live STM Cafeteria Rating System",
     "instruction": "Welcome to the Live Rating Cafeteria System<br><br>Your feedback is invaluable to us as we strive to enhance our cafeteria. Kindly take a moment to rate your experience STM Cafeteria.<br>Please rate based on your opinion<br><br>★★★★★-Highest Rate <br>★-Lowest Rate<br><br>Thank you",
 
@@ -23,11 +24,25 @@
     "submit_button": "Submit Review",
 
     "session_label": "Rating Session",
+    "session_label_require_text": "Please select rating session",
     "session_options": [
         { "name": "Breakfast", "value": 0 },
         { "name": "Lunch", "value": 1 },
         { "name": "Dinner", "value": 2 }
     ],
+
+    "confirm_submit_title": "Are you sure to submit?",
+    "confirm_submit_description": "This rating can only be submitted once a day",
+    "confirm_submit_agree_text": "Proceed",
+    "confirm_submit_decline_text": "Cancel",
+
+    "done_submit_title": "Form submitted. Thank you for your feedback",
+    "done_submit_description": "Your feedback is invaluable to us as we strive to enhance our cafeteria",
+    "done_submit_agree_text": "Ok",
+
+    "fail_submit_title": "Sorry, we could not process your request at this time",
+    "fail_submit_description": "Please try again later",
+    "fail_submit_agree_text": "Ok",
 
     "attachment_label": "Attachment Picture",
     "attachment_placeholder": "Click to attach picture"

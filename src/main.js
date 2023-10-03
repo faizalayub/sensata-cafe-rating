@@ -8,6 +8,8 @@ import Textarea from 'primevue/textarea';
 import InputMask from 'primevue/inputmask';
 import Dropdown from 'primevue/dropdown';
 import FileUpload from 'primevue/fileupload';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const app = createApp(App)
 
@@ -22,4 +24,7 @@ app.component('Prime-InputMask', InputMask);
 app.use(PrimeVue, {
     ripple: true
 });
+
+app.use(VueSweetalert2);
+
 app.mount('#app');
