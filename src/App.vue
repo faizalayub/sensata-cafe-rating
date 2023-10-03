@@ -202,10 +202,10 @@ export default {
                             url: '',
                             method: 'POST',
                             data: {
-                                comment: this.collectComment,
-                                session: this.collectSession,
-                                userid: this.collectStaffcode,
-                                mark: this.collectRate.map(c => c.value),
+                                comment: (this.collectComment ?? ''),
+                                session: (this.collectSession),
+                                userid: (this.collectStaffcode.replace(/\s+/g, '')),
+                                mark: (this.collectRate.map(c => c.value ?? 1)),
                             }
                         });
 
