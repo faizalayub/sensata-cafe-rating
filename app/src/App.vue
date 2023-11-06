@@ -199,9 +199,10 @@ export default {
 
                     if($confirm.isConfirmed){
                         await axios({
-                            url: '',
+                            url: this.$api,
                             method: 'POST',
                             data: {
+                                route: 'SaveRating',
                                 comment: (this.collectComment ?? ''),
                                 session: (this.collectSession),
                                 userid: (this.collectStaffcode.replace(/\s+/g, '')),

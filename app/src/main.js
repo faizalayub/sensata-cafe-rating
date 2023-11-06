@@ -25,6 +25,12 @@ app.use(PrimeVue, {
     ripple: true
 });
 
+app.use({
+    install: (e) => {
+        e.config.globalProperties.$api = 'http://localhost:41062/www/caferating.sensata.com/service/index.php';
+    }
+});
+
 app.use(VueSweetalert2);
 
 app.mount('#app');
