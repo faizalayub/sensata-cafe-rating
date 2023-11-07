@@ -27,7 +27,7 @@ app.use(PrimeVue, {
 
 app.use({
     install: (e) => {
-        e.config.globalProperties.$api = 'http://localhost:41062/www/caferating.sensata.com/service/index.php';
+        e.config.globalProperties.$api = 'http://localhost:41062/www/public/';
     }
 });
 
