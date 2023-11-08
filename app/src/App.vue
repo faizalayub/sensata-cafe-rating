@@ -199,7 +199,7 @@ export default {
 
                     if($confirm.isConfirmed){
                         await axios({
-                            url: this.$api,
+                            url: `${ this.$api }/rating/create`,
                             method: 'POST',
                             data: {
                                 route: 'SaveRating',
