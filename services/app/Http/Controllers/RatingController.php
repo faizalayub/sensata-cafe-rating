@@ -17,13 +17,12 @@ class RatingController extends Controller
 
     public function create(Request $request)
     {
-        return $request;
-        // $type = ($request->input('type') ?? NULL);
-        // $code = ($request->input('code') ?? NULL);
-        // $amount = ($request->input('amount') ?? NULL);
-        // $quantity = ($request->input('quantity') ?? NULL);
-        // $valid = ($request->input('valid') ?? NULL);
+        $type = ($request->input('comment') ?? NULL);
+        $mark = ($request->input('mark') ?? NULL);
+        $session = ($request->input('session') ?? NULL);
+        $employee = ($request->input('employee') ?? NULL);
 
+        return $mark;
         // $until_date = Carbon::parse($valid[1]);
         // $from_date = Carbon::parse($valid[0]);
 

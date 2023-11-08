@@ -26,9 +26,9 @@
     "session_label": "Sesi Penilaian",
     "session_label_require_text": "Sila pilih sesi penilaian",
     "session_options": [
-        { "name": "Sarapan", "value": 0 },
-        { "name": "Makan Tengah Hari", "value": 1 },
-        { "name": "Makan Malam", "value": 2 }
+        { "name": "Sarapan", "value": 1 },
+        { "name": "Makan Tengah Hari", "value": 2 },
+        { "name": "Makan Malam", "value": 3 }
     ],
 
     "confirm_submit_title": "Anda pasti untuk hantar markah undian?",

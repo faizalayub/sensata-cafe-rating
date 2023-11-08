@@ -14,6 +14,7 @@ class Cafes extends Model
     public    $timestamps = true;
 
     protected $fillable = [
+        'id',
         'remark',
         'open_time',
         'close_time'

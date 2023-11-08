@@ -26,9 +26,9 @@
     "session_label": "Rating Session",
     "session_label_require_text": "Please select rating session",
     "session_options": [
-        { "name": "Breakfast", "value": 0 },
-        { "name": "Lunch", "value": 1 },
-        { "name": "Dinner", "value": 2 }
+        { "name": "Breakfast", "value": 1 },
+        { "name": "Lunch", "value": 2 },
+        { "name": "Dinner", "value": 3 }
     ],
 
     "confirm_submit_title": "Are you sure to submit?",
