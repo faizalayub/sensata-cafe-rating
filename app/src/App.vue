@@ -53,7 +53,8 @@
                     :placeholder="language.session_label"
                     class="w-full"
                     optionLabel="name"
-                    optionValue="value">
+                    optionValue="value"
+                    @change="onChangeSession">
 
                     <template #value="{ value , placeholder }">
                         <template v-if="value">
@@ -194,6 +195,17 @@ export default {
                 break;
             }
         },
+        reset: function(){
+            this.collectComment = null;
+
+            this.collectSession = null;
+
+            this.collectStaffcode = null;
+
+            this.collectRate.forEach(c => {
+                c.value = null;
+            });
+        },
         sessionLabel: function(id){
             const data = this.language.session_options.find(c => c.value == id);
 
@@ -264,6 +276,7 @@ export default {
                         }
 
                         this.$swal(swalmessage);
+                        this.reset();
                     }
 
                     this.loading = false;
@@ -295,6 +308,12 @@ export default {
 
                 this.loading = false;
             }
+        },
+        onChangeSession: function(){
+            this.collectComment = null;
+            this.collectRate.forEach(c => {
+                c.value = null;
+            });
         }
     },
     setup: function(){
