@@ -36,13 +36,17 @@
     "confirm_submit_agree_text": "Proceed",
     "confirm_submit_decline_text": "Cancel",
 
-    "done_submit_title": "Form submitted. Thank you for your feedback",
-    "done_submit_description": "Your feedback is invaluable to us as we strive to enhance our cafeteria",
-    "done_submit_agree_text": "Ok",
+    "done_submit_title": "Thank you for your cafe rating submission",
+    "done_submit_description": "Your feedback has been successfully received",
+    "done_submit_agree_text": "Close",
+
+    "duplicated_submit_title": "You have reached the daily submission limit for this session",
+    "duplicated_submit_description": "You can submit again after the next session starts",
+    "duplicated_submit_agree_text": "Close",
 
     "fail_submit_title": "Sorry, we could not process your request at this time",
     "fail_submit_description": "Please try again later",
-    "fail_submit_agree_text": "Ok",
+    "fail_submit_agree_text": "Close",
 
     "attachment_label": "Attachment Picture",
     "attachment_placeholder": "Click to attach picture"

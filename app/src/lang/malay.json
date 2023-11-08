@@ -38,11 +38,15 @@
 
     "done_submit_title": "Markah telah dihantar",
     "done_submit_description": "Pendapat anda amatlah penting bagi penambahbaikan kafeteria STM",
-    "done_submit_agree_text": "Ok",
+    "done_submit_agree_text": "Tutup",
+
+    "duplicated_submit_title": "Anda telah mencapai had penyerahan harian untuk sesi ini",
+    "duplicated_submit_description": "Anda boleh menghantar semula selepas sesi seterusnya bermula",
+    "duplicated_submit_agree_text": "Tutup",
 
     "fail_submit_title": "Maaf, kami tidak boleh proses permintaan anda buat masa ini",
     "fail_submit_description": "Sila cuba lagi",
-    "fail_submit_agree_text": "Ok",
+    "fail_submit_agree_text": "Tutup",
 
     "attachment_label": "Gambar Lampiran",
     "attachment_placeholder": "Tekan untuk pilih gambar"

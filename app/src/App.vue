@@ -54,6 +54,24 @@
                     class="w-full"
                     optionLabel="name"
                     optionValue="value">
+
+                    <template #value="{ value , placeholder }">
+                        <template v-if="value">
+                            <div class="flex gap-3 align-items-center">
+                                <day-icon :daylight="value"></day-icon>
+                                <span class="flex-1">{{ sessionLabel(value) }}</span>
+                            </div>
+                        </template>
+
+                        <template v-else>{{ placeholder }}</template>
+                    </template>
+
+                    <template #option="{ option }">
+                        <div class="flex gap-3 align-items-center">
+                            <day-icon :daylight="option.value"></day-icon>
+                            <span class="flex-1">{{ option.name }}</span>
+                        </div>
+                    </template>
                 </Prime-Dropdown>
             </div>
 
@@ -121,13 +139,17 @@
 
 <script>
 import axios from 'axios';
-import { useVuelidate } from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
 import malay from './lang/malay.json';
 import english from './lang/english.json';
+import daylightIcon from './components/day-light-icon.vue';
 
 export default {
     name: 'App',
+    components: {
+        'day-icon': daylightIcon
+    },
     data: function(){
         return {
             lang: 'my',
@@ -172,6 +194,15 @@ export default {
                 break;
             }
         },
+        sessionLabel: function(id){
+            const data = this.language.session_options.find(c => c.value == id);
+
+            if(data){
+                return data.name;
+            }
+
+            return 'nothing';
+        },
         onUpload: function(e){
             console.clear();
             console.log(e);
@@ -198,25 +229,41 @@ export default {
                     });
 
                     if($confirm.isConfirmed){
-                        await axios({
+                        const { status } = await axios({
                             url: `${ this.$api }/api/rating/create`,
                             method: 'POST',
                             data: {
-                                comment: (this.collectComment ?? ''),
-                                session: (this.collectSession),
-                                employee: (this.collectStaffcode.replace(/\s+/g, '')),
                                 mark: (this.collectRate.map(c => c.value ?? 1)),
+                                review: (this.collectComment ?? ''),
+                                cafe_id: (this.collectSession),
+                                employee_id: (this.collectStaffcode.replace(/\s+/g, '')),
                             }
                         });
 
-                        this.$swal({
+                        const swalmessage = {
                             title: lang.done_submit_title,
                             text: lang.done_submit_description,
                             icon: 'success',
                             showCancelButton: false,
                             confirmButtonText: lang.done_submit_agree_text,
                             confirmButtonClass: 'bg-success-600',
-                        });
+                        };
+
+                        if(status == 208){
+                            swalmessage.icon = 'warning';
+                            swalmessage.title = lang.duplicated_submit_title;
+                            swalmessage.text = lang.duplicated_submit_description;
+                            swalmessage.confirmButtonText = lang.duplicated_submit_agree_text;
+                        }
+
+                        if(status == 400){
+                            swalmessage.icon = 'error';
+                            swalmessage.title = lang.fail_submit_title;
+                            swalmessage.text = lang.fail_submit_description;
+                            swalmessage.confirmButtonText = lang.fail_submit_agree_text;
+                        }
+
+                        this.$swal(swalmessage);
                     }
 
                     this.loading = false;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
  
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Cafes;
 use App\Models\Images;
 use App\Models\Rating;
@@ -10,31 +11,35 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    public function list(Request $request)
-    {   
-        return 'done';
-    }
-
     public function create(Request $request)
     {
-        $type = ($request->input('comment') ?? NULL);
-        $mark = ($request->input('mark') ?? NULL);
-        $session = ($request->input('session') ?? NULL);
-        $employee = ($request->input('employee') ?? NULL);
+        $cafeid = ($request->input('cafe_id') ?? NULL);
+        $mark = ($request->input('mark') ?? []);
+        $review = ($request->input('review') ?? NULL);
+        $employeeid = ($request->input('employee_id') ?? NULL);
 
-        return $mark;
-        // $until_date = Carbon::parse($valid[1]);
-        // $from_date = Carbon::parse($valid[0]);
+        $user = User::registerEmployee($employeeid);
 
-        // return Voucher::create([
-        //     'amount' => $amount,
-        //     'promocode' => $code,
-        //     'until_date' => $until_date,
-        //     'is_active' => 1,
-        //     'is_default' => 0,
-        //     'voucher_type' => $type,
-        //     'from_date' => $from_date,
-        //     'quantity' => $quantity
-        // ]);
+        $today = Carbon::now()->toDateString();
+
+        $isTodayRate = Rating::whereDate('created_at', $today)
+                        ->where('user_id', $user->id)
+                        ->where('cafe_id', $cafeid)
+                        ->exists();
+
+        if (!$isTodayRate) {
+            foreach ($mark as $ratingmark) {
+                Rating::create([
+                    'user_id' => $user->id,
+                    'cafe_id' => $cafeid,
+                    'review' => $review,
+                    'rating' => $ratingmark
+                ]);
+            }
+
+            return response()->json(['message' => 'Thank you for your cafe rating submission. Your feedback has been successfully received.'], 200);
+        }
+        
+        return response()->json(['message' => 'You have reached the daily submission limit for this session. You can submit again after the next session starts.'], 208);
     }
 }
