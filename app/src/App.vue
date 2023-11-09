@@ -51,7 +51,7 @@
                     id="session"
                     :options="language.session_options"
                     :placeholder="language.session_label"
-                    class="w-full"
+                    class="w-full session-dropdown"
                     optionLabel="name"
                     optionValue="value"
                     @change="onChangeSession">
@@ -344,6 +344,16 @@ export default {
 
 body, textarea {
     font-family: var(--font-family);
+}
+
+.session-dropdown{
+    .p-dropdown-label{
+        padding: 0.5rem !important;
+
+        &.p-placeholder{
+            padding: .9rem 1rem !important;
+        }
+    }
 }
 
 .form-width{
