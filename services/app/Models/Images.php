@@ -14,7 +14,6 @@ class Images extends Model
     public    $timestamps = true;
 
     protected $fillable = [
-        'ref_id',
         'name'
     ];
 

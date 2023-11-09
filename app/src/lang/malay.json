@@ -49,6 +49,7 @@
     "fail_submit_agree_text": "Tutup",
 
     "attachment_label": "Gambar Lampiran",
-    "attachment_placeholder": "Tekan untuk pilih gambar"
+    "attachment_placeholder": "Tekan untuk pilih gambar",
+    "attachment_remove_text": "Buang gambar"
 
 }

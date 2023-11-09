@@ -1,3 +1,110 @@
-body {
+@import "primevue/resources/themes/lara-light-indigo/theme.css";
+@import "primeflex/primeflex.css";
+
+body{
+    background-image: url('./assets/cafe-background-2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body, textarea {
     font-family: var(--font-family);
-} 
+}
+
+.session-dropdown{
+    .p-dropdown-label{
+        padding: 0.5rem !important;
+
+        &.p-placeholder{
+            padding: .9rem 1rem !important;
+        }
+    }
+}
+
+.form-width{
+    max-width: clamp(380px, 50vw, 560px);
+}
+
+.company-logo{
+    background-image: url('./assets/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: 15px -20px;
+    background-size: 120px;
+}
+
+.p-fileupload{
+    .p-fileupload-file-badge,
+    .p-progressbar{
+        display: none !important;
+    }
+
+    .p-fileupload-file{
+        padding: 0.6rem!important;
+        background: var(--surface-0);
+        align-items: center !important;
+        gap: 1rem;
+    }
+
+    .p-fileupload-choose-selected .p-button-label{
+        overflow: hidden;
+        max-width: 260px;
+        text-overflow: ellipsis;
+    }
+
+    .p-fileupload-buttonbar{
+        padding: 0 !important;
+        background: unset !important;
+        border: none !important;
+    }
+
+    .p-message-error{
+        margin: 0!important;
+        padding: 0!important;
+        background: none !important;
+        border: none;
+        border-radius: 0;
+
+        .p-message-wrapper{
+            padding: 0!important;
+            gap: 1rem;
+
+            > svg{
+                display: none !important;
+            }
+        }
+    }
+
+    .p-fileupload-content{
+        padding: 0 !important;
+        border: none !important;
+        margin-top: 0.3rem !important;
+    }
+
+    .p-fileupload-file-remove{
+        background: var(--red-100) !important;
+        height: 2rem !important;
+        width: 2rem !important;
+        border-radius: 50% !important;
+    }
+
+    .p-fileupload-file-details{
+        padding: 0 !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .p-fileupload-file-size{
+        color: var(--surface-600) !important;
+        font-size: .9rem;
+    }
+
+    .p-fileupload-file-name{
+        font-weight: bold;
+        margin: 0;
+        color: var(--surface-700) !important;
+    }
+}

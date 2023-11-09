@@ -49,6 +49,7 @@
     "fail_submit_agree_text": "Close",
 
     "attachment_label": "Attachment Picture",
-    "attachment_placeholder": "Click to attach picture"
+    "attachment_placeholder": "Click to attach picture",
+    "attachment_remove_text": "Delete picture"
 
 }

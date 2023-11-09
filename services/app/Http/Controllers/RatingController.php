@@ -8,14 +8,16 @@ use App\Models\Cafes;
 use App\Models\Images;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RatingController extends Controller
 {
     public function create(Request $request)
     {
         $cafeid = ($request->input('cafe_id') ?? NULL);
-        $mark = ($request->input('mark') ?? []);
+        $mark = ($request->input('mark') ?? '');
         $review = ($request->input('review') ?? NULL);
+        $pictures = ($request->file('images') ?? NULL);
         $employeeid = ($request->input('employee_id') ?? NULL);
 
         $user = User::registerEmployee($employeeid);
@@ -27,13 +29,26 @@ class RatingController extends Controller
                         ->where('cafe_id', $cafeid)
                         ->exists();
 
-        if (!$isTodayRate) {
-            foreach ($mark as $ratingmark) {
+        if(!$isTodayRate)
+        {
+            $imagebucket = NULL;
+
+            //# Upload Images
+            if(!empty($pictures)){
+                $filename = $pictures->hashName();
+                $fileupload = \Storage::disk('local')->put('public/rating', $pictures);
+                $imagebucket = Images::create([ 'name' => $filename ])->id;
+            }
+
+            //# Save Rating
+            foreach (explode(',',$mark) as $ratingmark)
+            {
                 Rating::create([
                     'user_id' => $user->id,
                     'cafe_id' => $cafeid,
                     'review' => $review,
-                    'rating' => $ratingmark
+                    'rating' => $ratingmark,
+                    'image' => $imagebucket
                 ]);
             }
 

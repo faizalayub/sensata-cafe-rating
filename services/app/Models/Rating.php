@@ -18,6 +18,7 @@ class Rating extends Model
         'cafe_id',
         'rating',
         'review',
+        'image'
     ];
 
     public function user()

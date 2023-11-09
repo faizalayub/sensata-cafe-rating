@@ -24,7 +24,7 @@
   
 <script>
 export default {
-    name: 'DayLightIcon',
+    name: 'DaylightIcon',
     props: {
         daylight: {
             type: Number,
