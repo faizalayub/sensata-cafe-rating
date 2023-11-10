@@ -1,6 +1,6 @@
 <template>
     <div class="card flex justify-content-center">
-        <form class="flex flex-column gap-2 form-width company-logo">
+        <div class="flex flex-column gap-2 form-width company-logo">
 
             <div class="flex justify-content-end w-full px-3">
                 <div class="flex-1 flex align-items-center justify-content-start h-5rem"></div>
@@ -139,7 +139,7 @@
                 </div>
             </div>
 
-            <!-- Submint Button -->
+            <!-- Submit Button -->
             <div class="block px-4 border-top-1 border-300 mt-2">
                 <Prime-Button
                     @click="onSubmit"
@@ -149,8 +149,18 @@
                     class="mt-3 w-full">
                 </Prime-Button>
             </div>
-        </form>
+
+            <!-- Admin Login Button -->
+            <div class="mt-2 flex align-items-center justify-content-center w-full surface-900 border-round-bottom-xl text-0 py-1 text-center flex-wrap gap-1" :style="{ fontSize: '10px' }">
+                <span>All rights reserved. Served with ❤️ by Sensata Technologies</span>
+                <span>|</span>
+                <a @click="onAdminlogin" href="JavaScript:void(0)" class="text-0 no-underline">admin login</a>
+            </div>
+
+        </div>
     </div>
+
+    <Login-Modal ref="adminlogin"></Login-Modal>
 </template>
 
 <script>
@@ -239,6 +249,11 @@ export default {
             }
 
             return 'nothing';
+        },
+        onAdminlogin: function(){
+            const { adminlogin } = this.$refs;
+
+            adminlogin.open();
         },
         onClearAttachment: function(){
             const { uploader } = this.$refs;
