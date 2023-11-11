@@ -14,7 +14,9 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import DaylightIcon from './components/day-light-icon.vue';
 import RatingForm from './components/rating-form.vue';
 import AdminLogin from './components/admin-login.vue';
+import AdminDashboard from './components/admin-dashboard.vue';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import Storage from './store/index';
 
 const app = createApp(App)
 
@@ -28,6 +30,7 @@ app.component('Prime-Textarea', Textarea);
 app.component('Prime-Input-Text', InputText);
 app.component('Prime-InputMask', InputMask);
 app.component('Admin-Login', AdminLogin);
+app.component('Admin-Dashboard', AdminDashboard);
 app.component('Day-Icon', DaylightIcon);
 app.component('Rating-Form', RatingForm);
 
@@ -42,5 +45,7 @@ app.use({
 });
 
 app.use(VueSweetalert2);
+
+app.use(Storage);
 
 app.mount('#app');

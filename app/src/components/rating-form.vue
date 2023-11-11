@@ -381,7 +381,7 @@ export default {
         }
     },
     mounted: function(){
-        window.jubo = this;
+
     }
 }
 </script>

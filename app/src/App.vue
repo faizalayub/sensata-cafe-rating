@@ -9,6 +9,11 @@ export default {
     data: () => ({
         currentPage: null,
     }),
+    computed: {
+        adminToken: function(){
+            return this.$store.getters.adminToken;
+        }
+    },
     methods: {
         onChangeHash: async function(){
             let output;
@@ -16,9 +21,12 @@ export default {
 
             switch($page){
                 case '#admin':
-                    output = 'Admin-Login'; break;
+                case '#admin-panel':
+                    output = (this.adminToken ? 'Admin-Dashboard' : 'Admin-Login');
+                break;
                 default:
-                    output = 'Rating-Form'; break;
+                    output = 'Rating-Form';
+                break;
             }
 
             this.currentPage = output;
