@@ -1,5 +1,5 @@
 <template>
-    <div class="card flex justify-content-center">
+    <div class="flex justify-content-center surface-0 pt-4 border-1 border-round-xl border-300 shadow-3">
         <div class="flex flex-column gap-2 form-width company-logo">
 
             <div class="flex justify-content-end w-full px-3">
@@ -159,8 +159,6 @@
 
         </div>
     </div>
-
-    <Login-Modal ref="adminlogin"></Login-Modal>
 </template>
 
 <script>
@@ -251,9 +249,7 @@ export default {
             return 'nothing';
         },
         onAdminlogin: function(){
-            const { adminlogin } = this.$refs;
-
-            adminlogin.open();
+            window.location.hash = '#admin';
         },
         onClearAttachment: function(){
             const { uploader } = this.$refs;

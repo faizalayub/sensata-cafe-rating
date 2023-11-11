@@ -13,7 +13,7 @@ import FileUpload from 'primevue/fileupload';
 import VueSweetalert2 from 'vue-sweetalert2';
 import DaylightIcon from './components/day-light-icon.vue';
 import RatingForm from './components/rating-form.vue';
-import LoginModal from './components/login-modal.vue';
+import AdminLogin from './components/admin-login.vue';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 const app = createApp(App)
@@ -27,7 +27,7 @@ app.component('Prime-Rating', Rating);
 app.component('Prime-Textarea', Textarea);
 app.component('Prime-Input-Text', InputText);
 app.component('Prime-InputMask', InputMask);
-app.component('Login-Modal', LoginModal);
+app.component('Admin-Login', AdminLogin);
 app.component('Day-Icon', DaylightIcon);
 app.component('Rating-Form', RatingForm);
 
