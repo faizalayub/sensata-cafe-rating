@@ -33,6 +33,8 @@ export default {
         }
     },
     mounted: function(){
+        window.location.hash = '';
+        
         window.addEventListener('hashchange', this.onChangeHash);
 
         this.onChangeHash();
